@@ -13,8 +13,13 @@
           </li>
          
         </ul>
-       <a href="{{route('logout')}}" class="text-dark" style="text-decoration: none;
-       font-weight:bold;">Logout</a>
+        <form method="POST" action="{{ route('logout') }}">
+          @csrf
+          <a class="text-dark" href="{{route('logout')}}"  onclick="event.preventDefault();
+                              this.closest('form').submit();"><b>Logout</b></a>
+
+          
+      </form>
       </div>
     </div>
   </nav>
