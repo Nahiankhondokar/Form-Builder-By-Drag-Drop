@@ -21,7 +21,7 @@
           <td>
               <a href="{{route('template.show', $template->id)}}" class="btn btn-sm btn-primary">View</a>
               @can('organizer')
-              <a href="" class="btn btn-sm btn-danger">Delete</a>
+              <a href="{{route('template.delete', $template->id)}}" class="btn btn-sm btn-danger">Delete</a>
               @endcan
           </td>
         </tr>

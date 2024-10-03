@@ -26,4 +26,10 @@ class CategoryController extends Controller
 
         return redirect()->route('dashboard')->with('success', 'Store successfully');
     }
+
+    public function delete(Category $category): RedirectResponse
+    {
+        $category->delete();
+        return redirect()->back()->with('success', 'Delete successfully');
+    }
 }

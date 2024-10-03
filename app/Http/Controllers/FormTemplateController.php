@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TemplateStoreRequest;
 use App\Models\FormTemplate;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
@@ -36,4 +37,11 @@ class FormTemplateController extends Controller
             'message'  => 'Store successfully'
         ]);
     }
+
+    public function delete(FormTemplate $formTemplate): RedirectResponse
+    {
+        $formTemplate->delete();
+        return redirect()->back()->with('success', 'Delete successfully');
+    }
+
 }

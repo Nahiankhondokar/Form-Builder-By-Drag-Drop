@@ -29,11 +29,15 @@ Route::middleware('auth')->group(function () {
     // Category Create
     Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
     Route::post('/category-store', [CategoryController::class, 'store'])->name('category.store');
+    Route::get('/category/delete/{category}', [CategoryController::class, 'delete'])->name('category.delete');
 
     // Form template Create
-    Route::get('/form-template', [FormTemplateController::class, 'index'])->name('template.index');
-    Route::get('/form-template/{id}', [FormTemplateController::class, 'show'])->name('template.show');
-    Route::post('/store-form-template', [FormTemplateController::class, 'store'])->name('template.store');
+    Route::prefix('form-template')->group(function(){
+        Route::get('/', [FormTemplateController::class, 'index'])->name('template.index');
+        Route::get('/list/{id}', [FormTemplateController::class, 'show'])->name('template.show');
+        Route::get('/delete/{formTemplate}', [FormTemplateController::class, 'delete'])->name('template.delete');
+        Route::post('/store', [FormTemplateController::class, 'store'])->name('template.store');
+    });
 });
 
 require __DIR__.'/auth.php';

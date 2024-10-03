@@ -25,7 +25,7 @@
           <td>{{$category->user->name ?? 'None'}}</td>
           <td>
               @can('organizer')
-              <a href="" class="btn btn-sm btn-danger">Delete</a>
+              <a href="{{route('category.delete', $category->id)}}" class="btn btn-sm btn-danger">Delete</a>
               @elsecan('user')
               <p class="text-danger">No permission</p>
               @endcan
@@ -40,6 +40,7 @@
       </tbody>
   </table>
 </div>
+<hr>
 
 @include('form_template.list')
 @endsection
