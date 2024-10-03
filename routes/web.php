@@ -10,7 +10,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    $categories = Category::all();
+    $categories = Category::with('user')->get();
     return view('dashboard', ['categories' => $categories]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -21,6 +21,7 @@ Route::middleware('auth')->group(function () {
 
     // Category Create
     Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
+    Route::post('/category-store', [CategoryController::class, 'store'])->name('category.store');
 });
 
 require __DIR__.'/auth.php';

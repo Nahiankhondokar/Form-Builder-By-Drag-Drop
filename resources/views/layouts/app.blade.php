@@ -28,7 +28,8 @@
             @include('layouts.header')
 
             <main>
-                {{ $slot }}
+                {{-- {{ $slot }} --}}
+                @yield('content')
             </main>
         </div>
     </body>
