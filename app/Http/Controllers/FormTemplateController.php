@@ -16,6 +16,12 @@ class FormTemplateController extends Controller
         return view('form_template.index');
     }
 
+    public function show(int $id)
+    {
+        $template = FormTemplate::findOrFail($id);
+        return view('form_template.view', compact('template'));
+    }
+
     public function store(TemplateStoreRequest $request): JsonResponse
     {
         FormTemplate::create([
@@ -23,8 +29,9 @@ class FormTemplateController extends Controller
             'form_template'=> $request->form_template,
             'user_id'   => auth()->user()->id
         ]);
+        $baseUrl = env('APP_URL');
+        Redirect::away("$baseUrl/dashboard");
 
-        Redirect::away('http://localhost:8000/dashboard');
         return response()->json([
             'message'  => 'Store successfully'
         ]);

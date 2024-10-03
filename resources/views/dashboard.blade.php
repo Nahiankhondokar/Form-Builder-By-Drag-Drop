@@ -18,5 +18,7 @@
     
     @include('category.index')
 
+    @include('form_template.list')
+
 
 </x-app-layout>

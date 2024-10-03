@@ -4,6 +4,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FormTemplateController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Category;
+use App\Models\FormTemplate;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -12,7 +13,12 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     $categories = Category::with('user')->get();
-    return view('dashboard', ['categories' => $categories]);
+    $templates = FormTemplate::with('user')->get();
+
+    return view('dashboard', [
+        'categories' => $categories,
+        'templates' => $templates
+    ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -26,6 +32,7 @@ Route::middleware('auth')->group(function () {
 
     // Form template Create
     Route::get('/form-template', [FormTemplateController::class, 'index'])->name('template.index');
+    Route::get('/form-template/{id}', [FormTemplateController::class, 'show'])->name('template.show');
     Route::post('/store-form-template', [FormTemplateController::class, 'store'])->name('template.store');
 });
 

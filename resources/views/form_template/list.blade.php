@@ -1,14 +1,9 @@
-@extends('layouts.app')
 
-@section('content')
 
-<div class="category-table m-5">
+<div class="template-table m-5">
   <table class="table table-striped border text-center">
       
-      <h2 class="text-center">Category list</h2>
-      @can('organizer')
-          <a href="{{route('category.index')}}" class="btn btn-sm btn-info header_btn">Create</a>
-      @endcan
+      <h2 class="text-center">Template list</h2>
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -18,16 +13,15 @@
         </tr>
       </thead>
       <tbody>
-        @forelse ($categories as $key => $category)
+        @forelse ($templates as $key => $template)
         <tr>
           <th scope="row">{{$key+1}}</th>
-          <td>{{$category->name}}</td>
-          <td>{{$category->user->name ?? 'None'}}</td>
+          <td>{{$template->name}}</td>
+          <td>{{$template->user->name ?? 'None'}}</td>
           <td>
+              <a href="{{route('template.show', $template->id)}}" class="btn btn-sm btn-primary">View</a>
               @can('organizer')
               <a href="" class="btn btn-sm btn-danger">Delete</a>
-              @elsecan('user')
-              <p class="text-danger">No permission</p>
               @endcan
           </td>
         </tr>
@@ -40,6 +34,3 @@
       </tbody>
   </table>
 </div>
-
-@include('form_template.list')
-@endsection

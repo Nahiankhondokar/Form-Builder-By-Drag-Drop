@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    let baseUrl = 'http://localhost:8000';
+    
     $(".form_bal_textfield").draggable({
         helper: function () {
             return getTextFieldHTML();
@@ -427,7 +429,7 @@ $(document).ready(function () {
                 },
                 success: function(response) {
                     console.log(response);
-                    window.location.href = "http://localhost:8000/dashboard";
+                    window.location.href = `${baseUrl}/dashboard`;
                 },
                 error: function(error) {
                     console.log(error);
