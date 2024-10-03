@@ -7,7 +7,7 @@
                 <a class="nav-link header_btn" aria-current="page" href="{{route('dashboard')}}">Dashboard</a>
             </li>
           <li class="nav-item">
-            <a class="nav-link header_btn" aria-current="page" href="#">Editor</a>
+            <a class="nav-link header_btn" aria-current="page" href="{{route('template.index')}}">Form Builder</a>
           </li>
         </ul>
        <a href="{{route('logout')}}" class="text-dark" style="text-decoration: none;

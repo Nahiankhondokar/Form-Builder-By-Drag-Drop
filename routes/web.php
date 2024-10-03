@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\FormTemplateController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
@@ -22,6 +23,10 @@ Route::middleware('auth')->group(function () {
     // Category Create
     Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
     Route::post('/category-store', [CategoryController::class, 'store'])->name('category.store');
+
+    // Form template Create
+    Route::get('/form-template', [FormTemplateController::class, 'index'])->name('template.index');
+    Route::post('/store-form-template', [FormTemplateController::class, 'store'])->name('template.store');
 });
 
 require __DIR__.'/auth.php';
