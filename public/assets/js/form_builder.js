@@ -395,10 +395,10 @@ $(document).ready(function () {
             $('.download_html').hide();
         }
 
+        let route = $('.routeName').val();
+        var htmlWithForm = `<form action="{{route(${route})}}" method="POST">${html}</form>`;
 
         if (plain_html === 'html') {
-            let rotue = $('.routeName').val();
-            var htmlWithForm = `<form action="{{route(${rotue})}}" method="POST">${html}</form>`;
             $('.preview').hide();
             $('.plain_html').show().find('textarea').val(htmlWithForm);
         } else {
@@ -409,9 +409,9 @@ $(document).ready(function () {
         $('.download_html').click(function(e){
             e.preventDefault();
             let name = $('.nameInput').val();
-            let rotue = $('.routeName').val();
+            let route = $('.routeName').val();
 
-            if(!name){
+            if(!name || !route){
                 $('.name_error_msg').text('Name is required');
                 $('.route_error_msg').text('Route is required');
             }
@@ -427,6 +427,7 @@ $(document).ready(function () {
                 },
                 success: function(response) {
                     console.log(response);
+                    window.location.href = "http://localhost:8000/dashboard";
                 },
                 error: function(error) {
                     console.log(error);

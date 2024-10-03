@@ -3,18 +3,11 @@
 
 @include('layouts.style')
 
-    {{-- <nav class="navbar navbar-light  bg-faded fixed-top">
-        <div class="clearfix">
-            <div class="container">
-                <button style="cursor: pointer;display: none" class="btn btn-info export_html mt-2 pull-right">Export HTML</button>
-                <h3 class="mr-auto">Drag & Drop Bootstrap Form Builder</h3>
-            </div>
-        </div>
-    </nav>
-    <br/> --}}
     <div class="title-area m-3">
         <button style="cursor: pointer;display: none" class="btn btn-info export_html mt-2 pull-right">View HTML</button>
-        <a href="" style="cursor: pointer;display: none" class="btn btn-primary download_html mt-2 pull-right mr-3">Store</a>
+
+        <a href="" style="cursor: pointer;display: none; " class="btn btn-primary download_html mt-2 pull-right mr-3">Store</a>
+        
         <h3 class="mr-auto text-center">Drag & Drop Bootstrap Form Builder</h3>
         <hr>
         <div class="mb-3 w-50 m-auto d-flex justify-center gap-2">
