@@ -6,7 +6,7 @@
     <div class="title-area m-3">
         <button style="cursor: pointer;display: none" class="btn btn-info export_html mt-2 pull-right">View HTML</button>
 
-        <a href="" style="cursor: pointer;display: none; " class="btn btn-primary download_html mt-2 pull-right mr-3">Store</a>
+        <a href="" style="cursor: pointer;display: none; " id="download_html" class="btn btn-primary mt-2 pull-right mr-3">Store</a>
         
         <h3 class="mr-auto text-center">Drag & Drop Bootstrap Form Builder</h3>
         <hr>

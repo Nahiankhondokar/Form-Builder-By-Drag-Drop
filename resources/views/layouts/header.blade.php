@@ -11,6 +11,9 @@
               <a class="nav-link header_btn" aria-current="page" href="{{route('template.index')}}">Form Builder</a>
             @endcan
           </li>
+          <li class="nav-item">
+              <a class="nav-link header_btn" aria-current="page" href="{{route('template.index')}}">User info</a>
+          </li>
          
         </ul>
         <form method="POST" action="{{ route('logout') }}">

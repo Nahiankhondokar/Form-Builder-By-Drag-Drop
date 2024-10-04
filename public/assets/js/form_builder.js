@@ -1,5 +1,6 @@
 $(document).ready(function () {
     let baseUrl = 'http://localhost:8000';
+    let htmlWithForm = '';
     
     $(".form_bal_textfield").draggable({
         helper: function () {
@@ -391,14 +392,14 @@ $(document).ready(function () {
         });
         if (html.length) {
             $('.export_html').show();
-            $('.download_html').show();
+            $('#download_html').show();
         } else {
             $('.export_html').hide();
-            $('.download_html').hide();
+            $('#download_html').hide();
         }
 
         let route = $('.routeName').val();
-        var htmlWithForm = `<form action="{{route(${route})}}" method="POST">${html}</form>`;
+        htmlWithForm += `<form action="{{route(${route})}}" method="POST">${html}</form>`;
 
         if (plain_html === 'html') {
             $('.preview').hide();
@@ -408,36 +409,37 @@ $(document).ready(function () {
             $('.preview').html(htmlWithForm).show();
         }
 
-        $('.download_html').click(function(e){
-            e.preventDefault();
-            let name = $('.nameInput').val();
-            let route = $('.routeName').val();
-
-            if(!name || !route){
-                $('.name_error_msg').text('Name is required');
-                $('.route_error_msg').text('Route is required');
-            }
-           
-           // Template store to DB
-            $.ajax({
-                type: 'POST',
-                url: '/store-form-template',
-                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
-                data: {
-                    form_template: htmlWithForm,
-                    name
-                },
-                success: function(response) {
-                    console.log(response);
-                    window.location.href = `${baseUrl}/dashboard`;
-                },
-                error: function(error) {
-                    console.log(error);
-                }
-            });
-        });
-
     }
+
+    $('#download_html').on('click', function(e){
+        e.preventDefault();
+        let name = $('.nameInput').val();
+        let route = $('.routeName').val();
+
+        if(!name || !route){
+            $('.name_error_msg').text('Name is required');
+            $('.route_error_msg').text('Route is required');
+        }
+       
+       // Template store to DB
+        $.ajax({
+            url: '/form-template/store',
+            type: 'POST',
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            data: {
+                form_template: htmlWithForm,
+                name
+            },
+            success: function(response) {
+                console.log(response);
+                window.location.href = `${baseUrl}/dashboard`;
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+    });
+
     $(document).on('click', '.export_html', function () {
         getPreview('html');
     });
