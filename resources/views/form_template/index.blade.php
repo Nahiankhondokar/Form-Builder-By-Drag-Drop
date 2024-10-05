@@ -18,8 +18,16 @@
             </div>
             <div class="route-input">
                 <label for="" class="form-label">Route Name <small>(text.index)</small></label>
-                <input type="text" class="form-control routeName">
+                <select name="route_name" id="" class="block mt-1 form-control routeName">
+                    <option value="">--Select--</option>
+                    @foreach ($routes as $route)
+                    <option value="{{$route->id}}">{{$route->name}}</option>
+                    @endforeach
+                </select>
                 <span class="route_error_msg text-danger"></span>
+            </div>
+            <div class="route-input m-auto">
+                <a href="{{route('route.index')}}" class="btn btn-sm btn-info text-white fw-bold ">Add Name Route</a>
             </div>
         </div>
     </div>
@@ -84,5 +92,6 @@
 
   
 @include('layouts.script')
+
 
 @endsection

@@ -1,9 +1,11 @@
 
-
-<div class="template-table m-5">
+<div class="route-table m-5">
   <table class="table table-striped border text-center">
       
-      <h2 class="text-center">Template list</h2>
+      <h2 class="text-center">Route Name List</h2>
+      @can('organizer')
+          <a href="{{route('route.store')}}" class="btn btn-sm btn-info header_btn">Create</a>
+      @endcan
       <thead>
         <tr>
           <th scope="col">#</th>
@@ -13,15 +15,16 @@
         </tr>
       </thead>
       <tbody>
-        @forelse ($templates as $key => $template)
+        @forelse ($routes as $key => $route)
         <tr>
           <th scope="row">{{$key+1}}</th>
-          <td>{{$template->name}}</td>
-          <td>{{$template->user->name ?? 'None'}}</td>
+          <td>{{$route->name}}</td>
+          <td>{{$route->user->name ?? 'None'}}</td>
           <td>
-              <a href="" class="btn btn-sm btn-primary">View</a>
               @can('organizer')
-              <a href="{{route('template.delete', $template->id)}}" class="btn btn-sm btn-danger">Delete</a>
+                <a href="{{route('route.delete', $route->id)}}" class="btn btn-sm btn-danger">Delete</a>
+              @elsecan('user')
+                <p class="text-danger">No permission</p>
               @endcan
           </td>
         </tr>
@@ -34,6 +37,4 @@
       </tbody>
   </table>
 </div>
-
-
-@include('route.index')
+<hr>

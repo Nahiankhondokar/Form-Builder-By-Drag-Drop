@@ -1,6 +1,6 @@
 $(document).ready(function () {
     let baseUrl = 'http://localhost:8000';
-    let htmlWithForm = '';
+    let html = '';
     
     $(".form_bal_textfield").draggable({
         helper: function () {
@@ -298,7 +298,8 @@ $(document).ready(function () {
     }
     function getPreview(plain_html = '') {
         var el = $('.form_builder_area .form_output');
-        var html = '';
+        html = '';
+        // var html = '';
         el.each(function () {
             var data_type = $(this).attr('data-type');
             //var field = $(this).attr('data-field');
@@ -390,6 +391,7 @@ $(document).ready(function () {
                 html += '<div class="form-group"><label class="control-label">' + label + '</label>' + option_html + '</div>';
             }
         });
+        
         if (html.length) {
             $('.export_html').show();
             $('#download_html').show();
@@ -398,37 +400,33 @@ $(document).ready(function () {
             $('#download_html').hide();
         }
 
-        let route = $('.routeName').val();
-        htmlWithForm += `<form action="{{route(${route})}}" method="POST">${html}</form>`;
-
         if (plain_html === 'html') {
             $('.preview').hide();
-            $('.plain_html').show().find('textarea').val(htmlWithForm);
+            $('.plain_html').show().find('textarea').val(html);
         } else {
             $('.plain_html').hide();
-            $('.preview').html(htmlWithForm).show();
+            $('.preview').html(html).show();
         }
-
     }
 
     $('#download_html').on('click', function(e){
         e.preventDefault();
         let name = $('.nameInput').val();
-        let route = $('.routeName').val();
+        let route_name = $('.routeName').val();
 
-        if(!name || !route){
+        if(!name){
             $('.name_error_msg').text('Name is required');
             $('.route_error_msg').text('Route is required');
-        }
-       
-       // Template store to DB
+        }else {
+            // Template store to DB
         $.ajax({
             url: '/form-template/store',
             type: 'POST',
             headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
             data: {
-                form_template: htmlWithForm,
-                name
+                form_template: html,
+                name,
+                route_name,
             },
             success: function(response) {
                 console.log(response);
@@ -438,6 +436,8 @@ $(document).ready(function () {
                 console.log(error);
             }
         });
+        }
+       
     });
 
     $(document).on('click', '.export_html', function () {

@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('form_templates', function (Blueprint $table) {
+        Schema::create('route_names', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->foreignId('user_id');
-            $table->foreignId('route_name_id')->default(0);
-            $table->longText('form_template');
-            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('form_templates');
+        Schema::dropIfExists('route_names');
     }
 };

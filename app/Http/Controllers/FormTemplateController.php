@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TemplateStoreRequest;
 use App\Models\FormTemplate;
+use App\Models\RouteName;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -14,21 +15,23 @@ class FormTemplateController extends Controller
 {
     public function index(): View
     {
-        return view('form_template.index');
+        $routes = RouteName::query()->orderByDesc('id')->get();
+        return view('form_template.index', compact('routes'));
     }
 
     public function show(int $id)
     {
-        $template = FormTemplate::findOrFail($id);
+        $template = FormTemplate::query()->with('nameRoute')->findOrFail($id);
         return view('form_template.view', compact('template'));
     }
 
     public function store(TemplateStoreRequest $request): JsonResponse
     {
         FormTemplate::create([
-            'name'      => $request->name,
+            'name'         => $request->name,
             'form_template'=> $request->form_template,
-            'user_id'   => auth()->user()->id
+            'route_name_id'=> $request->route_name ?? 0,
+            'user_id'      => auth()->user()->id
         ]);
         $baseUrl = env('APP_URL');
         Redirect::away("$baseUrl/dashboard");

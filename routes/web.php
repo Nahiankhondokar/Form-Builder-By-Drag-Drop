@@ -1,8 +1,11 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FormTemplateController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RouteController;
+use App\Http\Controllers\RouteNameController;
 use App\Models\Category;
 use App\Models\FormTemplate;
 use Illuminate\Support\Facades\Route;
@@ -11,15 +14,9 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::get('/dashboard', function () {
-    $categories = Category::with('user')->get();
-    $templates = FormTemplate::with('user')->get();
-
-    return view('dashboard', [
-        'categories' => $categories,
-        'templates' => $templates
-    ]);
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])
+->middleware(['auth', 'verified'])
+->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -37,6 +34,13 @@ Route::middleware('auth')->group(function () {
         Route::get('/list/{id}', [FormTemplateController::class, 'show'])->name('template.show');
         Route::get('/delete/{formTemplate}', [FormTemplateController::class, 'delete'])->name('template.delete');
         Route::post('/store', [FormTemplateController::class, 'store'])->name('template.store');
+    });
+
+    // Rotue Create
+    Route::prefix('route')->group(function(){
+        Route::get('/', [RouteNameController::class, 'index'])->name('route.index');
+        Route::post('/store', [RouteNameController::class, 'store'])->name('route.store');
+        Route::get('/delete/{routeName}', [RouteNameController::class, 'delete'])->name('route.delete');
     });
 });
 

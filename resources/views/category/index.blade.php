@@ -13,7 +13,7 @@
         <tr>
           <th scope="col">#</th>
           <th scope="col">Name</th>
-          <th scope="col">Organizer</th>
+          <th scope="col">User</th>
           <th scope="col">Action</th>
         </tr>
       </thead>

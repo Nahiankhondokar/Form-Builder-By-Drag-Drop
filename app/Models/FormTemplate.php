@@ -16,4 +16,9 @@ class FormTemplate extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function nameRoute(): BelongsTo
+    {
+        return $this->belongsTo(RouteName::class, 'route_name_id', 'id');
+    }
 }
