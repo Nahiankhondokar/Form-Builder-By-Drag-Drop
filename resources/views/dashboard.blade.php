@@ -10,12 +10,11 @@
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900">
                     {{ __("Welcome To Dashboard!") }}
-                    
                 </div>
             </div>
         </div>
     </div>
     
-    @include('category.index')
+    @include('userinfo.index')
 
 </x-app-layout>

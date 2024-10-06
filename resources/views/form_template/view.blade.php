@@ -5,7 +5,7 @@
     <h4 class="text-center">Template View</h4>
 
         <div class="container">
-            <form action="{{route($template->route ?? '')}}" method="POST">
+            <form action="" method="POST">
                 @csrf
                 {!! $template->form_template !!}
             </form>

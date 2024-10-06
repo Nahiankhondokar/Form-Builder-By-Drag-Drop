@@ -13,9 +13,12 @@ return new class extends Migration
     {
         Schema::create('user_infos', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->string('email');
+            $table->string('phone');
             $table->foreignId('user_id');
             $table->foreignId('category_id');
-            $table->json('user_info');
+            $table->longText('extra_data')->nullable();
             $table->timestamps();
         });
     }

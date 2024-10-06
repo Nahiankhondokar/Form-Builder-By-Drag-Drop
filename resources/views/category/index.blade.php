@@ -1,6 +1,4 @@
-@extends('layouts.app')
 
-@section('content')
 
 <div class="category-table m-5">
   <table class="table table-striped border text-center">
@@ -33,7 +31,7 @@
         </tr>
         @empty
             <tr>
-              <td colspan="4">Not Found !</td>
+              <td class="text-danger fw-bold" colspan="7">Not Found !</td>
             </tr>
         @endforelse
         
@@ -43,4 +41,3 @@
 <hr>
 
 @include('form_template.list')
-@endsection

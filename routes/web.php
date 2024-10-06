@@ -6,6 +6,7 @@ use App\Http\Controllers\FormTemplateController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RouteController;
 use App\Http\Controllers\RouteNameController;
+use App\Http\Controllers\UserInfoController;
 use App\Models\Category;
 use App\Models\FormTemplate;
 use Illuminate\Support\Facades\Route;
@@ -19,9 +20,9 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
 ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    // Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    // Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     // Category Create
     Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
@@ -41,6 +42,13 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [RouteNameController::class, 'index'])->name('route.index');
         Route::post('/store', [RouteNameController::class, 'store'])->name('route.store');
         Route::get('/delete/{routeName}', [RouteNameController::class, 'delete'])->name('route.delete');
+    });
+
+    // Use info Create
+    Route::prefix('user-info')->group(function(){
+        Route::get('/', [UserInfoController::class, 'index'])->name('info.index');
+        Route::post('/store', [UserInfoController::class, 'store'])->name('info.store');
+        // Route::get('/delete/{userInfo}', [RouteNameController::class, 'delete'])->name('route.delete');
     });
 });
 

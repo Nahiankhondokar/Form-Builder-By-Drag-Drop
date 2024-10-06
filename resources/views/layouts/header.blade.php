@@ -12,7 +12,7 @@
             @endcan
           </li>
           <li class="nav-item">
-              <a class="nav-link header_btn" aria-current="page" href="{{route('template.index')}}">User info</a>
+              <a class="nav-link header_btn" aria-current="page" href="{{route('info.index')}}">Data Collect</a>
           </li>
          
         </ul>

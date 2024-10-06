@@ -19,7 +19,7 @@
           <td>{{$template->name}}</td>
           <td>{{$template->user->name ?? 'None'}}</td>
           <td>
-              <a href="" class="btn btn-sm btn-primary">View</a>
+              <a href="{{route('template.show', $template->id)}}" class="btn btn-sm btn-primary">View</a>
               @can('organizer')
               <a href="{{route('template.delete', $template->id)}}" class="btn btn-sm btn-danger">Delete</a>
               @endcan
@@ -27,7 +27,7 @@
         </tr>
         @empty
             <tr>
-              <td colspan="4">Not Found !</td>
+              <td class="text-danger fw-bold" colspan="7">Not Found !</td>
             </tr>
         @endforelse
         

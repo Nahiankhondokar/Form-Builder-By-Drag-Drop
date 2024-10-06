@@ -4,7 +4,7 @@
       
       <h2 class="text-center">Route Name List</h2>
       @can('organizer')
-          <a href="{{route('route.store')}}" class="btn btn-sm btn-info header_btn">Create</a>
+          <a href="{{route('route.index')}}" class="btn btn-sm btn-info header_btn">Create</a>
       @endcan
       <thead>
         <tr>
@@ -30,7 +30,7 @@
         </tr>
         @empty
             <tr>
-              <td colspan="4">Not Found !</td>
+              <td class="text-danger fw-bold" colspan="7">Not Found !</td>
             </tr>
         @endforelse
         
