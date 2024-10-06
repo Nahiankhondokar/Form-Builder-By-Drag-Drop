@@ -46,7 +46,7 @@ Route::middleware('auth')->group(function () {
 
     // Use info Create
     Route::prefix('user-info')->group(function(){
-        Route::get('/', [UserInfoController::class, 'index'])->name('info.index');
+        Route::get('/', [UserInfoController::class, 'create'])->name('info.create');
         Route::post('/store', [UserInfoController::class, 'store'])->name('info.store');
         // Route::get('/delete/{userInfo}', [RouteNameController::class, 'delete'])->name('route.delete');
     });

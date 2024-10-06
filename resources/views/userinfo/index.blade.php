@@ -7,7 +7,7 @@
         
         <h2 class="text-center">User Data List</h2>
         @can('organizer')
-            <a href="{{route('route.store')}}" class="btn btn-sm btn-info header_btn">Create</a>
+            <a href="{{route('info.create')}}" class="btn btn-sm btn-info header_btn">Create</a>
         @endcan
         <thead>
           <tr>
