@@ -17,10 +17,14 @@
           </li>
          
         </ul>
+
+        <div class="role-status d-flex mr-3 bg-white border rounded-1">
+          <p class="nav-link header_btn mr-3 border p-1 text-dark m-auto" aria-current="page" href="">{{ucfirst(auth()->user()->role)}}</p>
+        </div>
         <form method="POST" action="{{ route('logout') }}">
           @csrf
-          <a class="text-dark" href="{{route('logout')}}"  onclick="event.preventDefault();
-                              this.closest('form').submit();"><b>Logout</b></a>
+          <a class="text-dark" href="{{route('logout')}}" 
+          onclick="event.preventDefault(); this.closest('form').submit();"><b>Logout</b></a>
 
           
       </form>
