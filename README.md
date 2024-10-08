@@ -1,4 +1,4 @@
-## Description of the project features for `Task 01`
+## Description of the project features of `Task 01`
 * Authentication system.
 * We can register new user & login as `user or organizer`
 * New register users whose role is user only view the data.
@@ -8,7 +8,7 @@
 * User can add their data category wise & view also.
 * Only organizer can delete any of data.
 
-## Description of the project features for `Task 02`
+## Description of the project features of `Task 02`
 * User can make their long user short & instantly visit the original URL by short URL.
 * User can view only their short URL that they have created.
 * User can only their short URL.
