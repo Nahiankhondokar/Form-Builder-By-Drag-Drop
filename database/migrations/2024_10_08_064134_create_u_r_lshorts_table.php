@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('u_r_lshorts', function (Blueprint $table) {
             $table->id();
+            $table->integer('count')->default(0);
+            $table->foreignId('user_id');
             $table->string('original_url');
             $table->string('shortened_url')->unique();
-            $table->foreignId('user_id');
             $table->timestamps();
         });
     }

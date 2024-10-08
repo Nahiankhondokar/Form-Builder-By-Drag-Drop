@@ -30,8 +30,8 @@
        <div class="short_url">
         <span class="fw-bold">Short Url</span>
         <br>
-        <a href="{{route('url.redirect', session('shortened_url ') ?? '')}}" class="text-success fs-5 fw-bold" target="_blank">
-            {{ session('shortened_url ')  ? url('/') . '/' .session('shortened_url ') : 'Nothing'}}
+        <a href="{{route('url.redirect', session('shortened_url') ?? '')}}" class="text-success fs-5 fw-bold" target="_blank">
+            {{ session('shortened_url')  ? url('/') . '/' .session('shortened_url') : 'Nothing'}}
         </a>
        </div>
     </div>

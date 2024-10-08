@@ -22,15 +22,19 @@ class URLshortController extends Controller
 
         return redirect()->back()->with([
             'success' => 'Created successfully',
-            'original_url'  => $url->original_url,
-            'shortened_url '  => $url->shortened_url ,
+            'original_url'     => $url->original_url,
+            'shortened_url'    => $url->shortened_url,
         ]);
     }
 
     public function redirect(string $shortenedUrl)
     {
         $shortUrl = URLshort::where('shortened_url', $shortenedUrl)->firstOrFail();
-
+        if($shortUrl){
+            $shortUrl->count = $shortUrl->count + 1;
+            $shortUrl->save();
+        }
+        
         return redirect($shortUrl->original_url);
     }
 
