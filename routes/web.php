@@ -6,6 +6,7 @@ use App\Http\Controllers\FormTemplateController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RouteController;
 use App\Http\Controllers\RouteNameController;
+use App\Http\Controllers\URLshortController;
 use App\Http\Controllers\UserInfoController;
 use App\Models\Category;
 use App\Models\FormTemplate;
@@ -49,6 +50,13 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [UserInfoController::class, 'create'])->name('info.create');
         Route::post('/store', [UserInfoController::class, 'store'])->name('info.store');
         // Route::get('/delete/{userInfo}', [RouteNameController::class, 'delete'])->name('route.delete');
+    });
+
+     // Use info Create
+     Route::prefix('short-url')->group(function(){
+        Route::get('/', [URLshortController::class, 'index'])->name('url.index');
+        Route::post('/shorten', [URLshortController::class, 'store'])->name('url.store');
+        Route::get('/redirect/{shortenedUrl}', [URLshortController::class, 'redirect'])->name('url.redirect');
     });
 });
 
