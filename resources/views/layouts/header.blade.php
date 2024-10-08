@@ -13,13 +13,12 @@
           </li>
           <li class="nav-item">
               <a class="nav-link header_btn" aria-current="page" href="{{route('info.create')}}">Data Collect</a>
-           
           </li>
          
         </ul>
 
         <div class="role-status d-flex mr-3 bg-white border rounded-1">
-          <p class="nav-link header_btn mr-3 border p-1 text-dark m-auto" aria-current="page" href="">{{ucfirst(auth()->user()->role)}}</p>
+          <p class="nav-link header_btn mr-3 border p-1 text-dark m-auto" aria-current="page" href="">{{ucfirst(auth()->user()->role)}}, Name : {{auth()->user()->name}}</p>
         </div>
         <form method="POST" action="{{ route('logout') }}">
           @csrf
