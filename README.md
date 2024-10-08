@@ -5,8 +5,8 @@
 * We can create a category & delete user role-wise.
 * We can design new form template by `Form Builder`
 * We can create valid route names for making dynamic forms.
-* User can add their data category wise & view also.
-* Only organizer can delete any of data.
+* User can create their data category wise & view also.
+* Only organizer can `Delete` any of data.
 
 ## Description of the project features of `Task 02`
 * User can make their long user short & instantly visit the original URL by short URL.
