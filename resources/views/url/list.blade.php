@@ -8,7 +8,7 @@
             <th scope="col">#</th>
             <th scope="col">Original URL</th>
             <th scope="col">Short URL</th>
-            <th scope="col">Short URL Visit</th>
+            <th scope="col">Visited</th>
             <th scope="col">User</th>
             <th scope="col">Action</th>
           </tr>

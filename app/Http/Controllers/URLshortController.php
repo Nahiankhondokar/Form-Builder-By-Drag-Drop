@@ -29,13 +29,16 @@ class URLshortController extends Controller
 
     public function redirect(string $shortenedUrl)
     {
-        $shortUrl = URLshort::where('shortened_url', $shortenedUrl)->firstOrFail();
-        if($shortUrl){
-            $shortUrl->count = $shortUrl->count + 1;
-            $shortUrl->save();
+        if($shortenedUrl){
+            $shortUrl = URLshort::where('shortened_url', $shortenedUrl)->firstOrFail();
+            if($shortUrl){
+                $shortUrl->count = $shortUrl->count + 1;
+                $shortUrl->save();
+            }
+            
+            return redirect($shortUrl->original_url);
         }
-        
-        return redirect($shortUrl->original_url);
+        return redirect()->back()->with('error', 'Something went wrong!');
     }
 
     public function delete($id): RedirectResponse

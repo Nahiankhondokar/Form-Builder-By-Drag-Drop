@@ -19,22 +19,24 @@
     </div>
 <br>
 <br>
+   @if (Session::has('original_url'))
     <div class="short-url-output m-auto" style="display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;">
-       <div class="long_url">
+        <div class="long_url">
         <span class="fw-bold">Long Url</span><br>
         <span class="text-dark fs-5 fw-bold">{{ session('original_url')  ?? 'Nothing'}}</span>
-       </div>
-       <div class="short_url">
+        </div>
+        <div class="short_url">
         <span class="fw-bold">Short Url</span>
         <br>
         <a href="{{route('url.redirect', session('shortened_url') ?? '')}}" class="text-success fs-5 fw-bold" target="_blank">
             {{ session('shortened_url')  ? url('/') . '/' .session('shortened_url') : 'Nothing'}}
         </a>
-       </div>
+        </div>
     </div>
+   @endif
   </div>
   <hr>
   
