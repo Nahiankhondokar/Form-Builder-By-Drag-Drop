@@ -15,8 +15,8 @@
               <a class="nav-link header_btn" aria-current="page" href="{{route('info.create')}}">Data Collect</a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link header_btn" aria-current="page" href="{{route('url.index')}}">URL shorten</a>
+          <li class="nav-item border bg-white">
+            <a class="nav-link header_btn text-dark" aria-current="page" href="{{route('url.index')}}">URL shorten</a>
           </li>
          
         </ul>
