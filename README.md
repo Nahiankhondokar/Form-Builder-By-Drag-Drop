@@ -1,4 +1,4 @@
-##How to install this simple `Form Builder Editor & Data collect`
+# How to install this simple `Form Builder Editor & Data collect`
 * Clone or Download the project.
 * Create .env file & connect database.
 * composer install
