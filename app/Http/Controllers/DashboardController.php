@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\FormTemplate;
 use App\Models\RouteName;
+use App\Models\URLshort;
 use App\Models\UserInfo;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -43,11 +44,17 @@ class DashboardController extends Controller
         ->orderByDesc('id')
         ->get();
     
+        $urls = URLshort::with('user')
+        ->where('user_id', $authId)
+        ->orderByDesc('id')
+        ->get();
+        
         return view('dashboard', [
             'categories' => $categories,
             'templates' => $templates,
             'routes'    => $routes,
             'userDatas' => $userDatas,
+            'urls'      => $urls,
         ]);
     }
 }

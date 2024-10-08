@@ -49,7 +49,6 @@ Route::middleware('auth')->group(function () {
     Route::prefix('user-info')->group(function(){
         Route::get('/', [UserInfoController::class, 'create'])->name('info.create');
         Route::post('/store', [UserInfoController::class, 'store'])->name('info.store');
-        // Route::get('/delete/{userInfo}', [RouteNameController::class, 'delete'])->name('route.delete');
     });
 
      // Use info Create
@@ -57,6 +56,7 @@ Route::middleware('auth')->group(function () {
         Route::get('/', [URLshortController::class, 'index'])->name('url.index');
         Route::post('/shorten', [URLshortController::class, 'store'])->name('url.store');
         Route::get('/redirect/{shortenedUrl}', [URLshortController::class, 'redirect'])->name('url.redirect');
+        Route::get('/delete/{id}', [URLshortController::class, 'delete'])->name('url.delete');
     });
 });
 

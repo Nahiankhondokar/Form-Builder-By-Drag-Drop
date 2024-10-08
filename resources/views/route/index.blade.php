@@ -38,3 +38,5 @@
   </table>
 </div>
 <hr>
+
+@include('url.list')

@@ -33,4 +33,10 @@ class URLshortController extends Controller
 
         return redirect($shortUrl->original_url);
     }
+
+    public function delete($id): RedirectResponse
+    {
+        URLshort::query()->find($id)->delete();
+        return redirect()->back()->with('success', 'Delete successfully');
+    }
 }

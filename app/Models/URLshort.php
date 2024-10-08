@@ -12,6 +12,11 @@ class URLshort extends Model
 
     protected $guarded = [];
 
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
     public static function generateShortUrl($originalUrl)
     {
         $shortenedUrl = Str::random(6); 
