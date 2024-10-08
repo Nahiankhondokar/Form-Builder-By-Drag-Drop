@@ -16,7 +16,9 @@
           @forelse ($urls as $key => $url)
           <tr>
             <th scope="row">{{$key+1}}</th>
-            <td>{{$url->original_url ?? 'None'}}</td>
+            <td>
+                <a href="{{$url->original_url}}" class="fw-bold">{{$url->original_url ?? 'None'}}</a>
+            </td>
             <td>
                 <a href="{{route('url.redirect', $url->shortened_url ?? '')}}" class="text-success fs-5 fw-bold" target="_blank">
                     {{ $url->shortened_url ? url('/') . '/' .$url->shortened_url : 'Nothing'}}

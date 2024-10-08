@@ -25,7 +25,7 @@
               @can('organizer')
               <a href="{{route('category.delete', $category->id)}}" class="btn btn-sm btn-danger">Delete</a>
               @elsecan('user')
-              <p class="text-danger">No permission</p>
+              <p class="text-danger fw-bold">No permission</p>
               @endcan
           </td>
         </tr>

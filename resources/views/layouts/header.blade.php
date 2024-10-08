@@ -22,7 +22,11 @@
         </ul>
 
         <div class="role-status d-flex mr-3 bg-white border rounded-1">
-          <p class="nav-link header_btn mr-3 border p-1 text-dark m-auto" aria-current="page" href="">{{ucfirst(auth()->user()->role)}}, Name : {{auth()->user()->name}}</p>
+          <p class="nav-link header_btn mr-3 border p-1 text-dark m-auto text-center" aria-current="page" href="">
+            Name : {{auth()->user()->name}}
+            <br>
+            <span class="text-primary text-center m-auto">{{ucfirst(auth()->user()->role)}}</span>
+          </p>
         </div>
         <form method="POST" action="{{ route('logout') }}">
           @csrf
