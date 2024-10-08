@@ -3,7 +3,7 @@
 * We can register new user & login as `user or organizer`
 * New register users whose role is user only view the data.
 * We can create a category & delete user role-wise.
-* We can design new form template category wise by `Form Builder`
+* We can design new form template by `Form Builder`
 * We can create valid route names for making dynamic forms.
 * User can add their data category wise & view also.
 * Only organizer can delete any of data.
