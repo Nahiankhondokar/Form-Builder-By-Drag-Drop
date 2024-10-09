@@ -17,7 +17,7 @@
                 <span class="name_error_msg text-danger"></span>
             </div>
             <div class="route-input">
-                <label for="" class="form-label">Route Name <small>(text.index)</small></label>
+                <label for="" class="form-label">Route Name <small>(Ex:text.index) Optional</small></label>
                 <select name="route_name" id="" class="block mt-1 form-control routeName">
                     <option value="">--Select--</option>
                     @foreach ($routes as $route)
