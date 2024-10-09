@@ -1,4 +1,20 @@
-# How to install this simple `Form Builder Editor & Data collect`
+## Description of the project features of `Task 01`
+* Authentication system.
+* We can register new user & login as `user or organizer`
+* New register users whose role is user only view the data.
+* We can create a category & delete user role-wise.
+* We can design new form template by `Form Builder`
+* We can create valid route names for making dynamic forms.
+* User can create their data category wise & view also.
+* Only organizer can `Delete` any of data.
+
+## Description of the project features of `Task 02`
+* User can make their long user short & instantly visit the original URL by short URL.
+* User can view only their short URL that they have created.
+* User can only their short URL.
+* How many times visit by short URL they can see the amount of number.
+
+## How to install this simple `Form Builder Editor & Data collect`
 * Clone or Download the project.
 * Create .env file & connect database.
 * composer install
